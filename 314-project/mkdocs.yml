@@ -2,4 +2,5 @@ site_name: 314 Project
 
 nav:
   - Home: index.md
+theme: windmill-dark
 
