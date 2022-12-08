@@ -52,6 +52,6 @@ for i in range(len(unique_ids)):
 grouped_multiple = big_data.groupby('pitcher').agg({'release_speed': 'mean', 'release_pos_x': 'mean', 'release_pos_z': 'mean', 'pfx_x': 'mean', 'pfx_z': 'mean', 'release_spin_rate': 'mean', 'release_extension': 'mean', 'spin_axis': 'mean', 'swinging_strike': 'mean'})
 grouped_multiple = grouped_multiple.reset_index()
 df_cd = pd.merge(grouped_multiple, df, on='pitcher')
-df_cd.to_csv('aggregatedData.csv')
+df_cd.to_csv('pitchers.csv')
 
 print(grouped_multiple.head())
