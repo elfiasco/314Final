@@ -6,7 +6,7 @@
 ## Getting Started Guide
 
 ## Examples
-![Full Data Head](vscode-remote://codespaces%2Bafinn1-redesigned-trout-74vr7r7r6rj2xv79/workspaces/314Final/314-project/docs/full%20data%20head.png)
+![Full Data Head](full%20data%20head.png)
 
 ## BDD-Style Feature Documentation
 Data Normalization
