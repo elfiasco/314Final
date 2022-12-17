@@ -1,23 +1,20 @@
-# Using MLB Pitch Data to Predict Whether a Batter Will Make Contact With The Ball
+# What Makes the Perfect Fastball?
 # By Simon Todreas, Ben Steel, and AJ Finn
 
-## README
-Project Status: In Progress
-
-Name: What Makes the Perfect Fastball?
-
-Description: Given MLB pitch data downloaded locally our project will clean it to display only relevant statistics, normalize it by linking it via a pitcher ID to a table with pitcher demographic info obtained from webscraping, and finally include mean aggreagated pitch data in the pithers table. To start cleaning the data we want to remove all irrelevant columns, keeping only 'pitcher', 'batter', 'release_speed', 'release_pos_x', 'release_pos_z', 'pfx_x', 'pfx_z', 'release_spin_rate', 'release_extension', 'spin_axis', and 'description'. The description column will be changed to swinging_strike and values will be set to 1 if swinging_strike was the description, and 0 otherwise. Next, a new column is added containing the total number of pitches thrown during the 2022 season by whichever pitcher the pitch corresponds to. This is done to eliminate players from the table with less than 100 pitches, after removing them the numPitches column is removed. Now, we are ready to web scrape to build our table of pitcher demographic data where each pitcher is an entry as opposed to every pitch as in the other table. From the pitch table we are able to get a unique pitcher ID that will act as a primary key in the pitcher table. Web scraping from mlb.com with the ID will generate various demographic information for the pitcher including, throwing hand, height, weight, age as of July 1 2022. In addition to including this data in the table, aggregated pitch data for each pitcher will also be included. Aggregation was done for 'release_speed', 'release_pos_x', 'release_pos_z', 'pfx_x', 'pfx_z', 'release_spin_rate', 'release_extension', 'spin_axis', 'swinging_strike' by calculating the mean.
-
-Support: Large amounts of pitch data is not readily avaliable for download on Baseball Savant and will require concatenating excel files before being used in the project
-
-Authors: Simon Todreas, Ben Steel, AJ Finn
 
 ## Installation Instructions
+All original pitch data downloaded from https://baseballsavant.mlb.com/statcast_search 
 
 ## Getting Started Guide
-
+To start cleaning the data we want to remove all irrelevant columns, keeping only 'pitcher', 'batter', 'release_speed', 'release_pos_x', 'release_pos_z', 'pfx_x', 'pfx_z', 'release_spin_rate', 'release_extension', 'spin_axis', and 'description'. The description column will be changed to swinging_strike and values will be set to 1 if swinging_strike was the description, and 0 otherwise. Next, a new column is added containing the total number of pitches thrown during the 2022 season by whichever pitcher the pitch corresponds to. This is done to eliminate players from the table with less than 100 pitches, after removing them the numPitches column is removed. Now, we are ready to web scrape to build our table of pitcher demographic data where each pitcher is an entry as opposed to every pitch as in the other table. From the pitch table we are able to get a unique pitcher ID that will act as a primary key in the pitcher table. Web scraping from mlb.com with the ID will generate various demographic information for the pitcher including, throwing hand, height, weight, age as of July 1 2022. In addition to including this data in the table, aggregated pitch data for each pitcher will also be included. Aggregation was done for 'release_speed', 'release_pos_x', 'release_pos_z', 'pfx_x', 'pfx_z', 'release_spin_rate', 'release_extension', 'spin_axis', 'swinging_strike' by calculating the mean.
 ## Examples
+
 ![Full Data Head](full%20data%20head.png)
+Section unclean data from baseball savant
+![Data Vis 1](ex2.png)
+Horizontal vs Vertical release point for two pitchers
+![Data Vis 2](ex3.png)
+Horizontal vs Vertical movement for two pitchers
 
 ## BDD-Style Feature Documentation
 Data Normalization
@@ -37,7 +34,20 @@ As a user analyzing the data I want to have access to as many possibly helpful v
 
 ## API Documentation
 `biographicalinfo`
+- Given a 6 digit player ID, return a list with the players name, throwing hand, height, weight, and birth date
+
 
 
 ## Contributing Guide
 N/A
+
+## Kaggler's Guide
+Predict which pitches are swinging strikes
+Identify characteristics that result in more swinging strikes
+Objective: Minimize MSE by making prediction of likelihood of swinging strike
+
+Baseline Model
+
+- Predict every pitch will not be a swinging strike
+
+- MSE = proportion of swinging strikes in test data = 0.0846

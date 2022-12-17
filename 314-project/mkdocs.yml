@@ -4,3 +4,6 @@ nav:
   - Home: index.md
 theme: windmill-dark
 
+plugins:
+- search
+- mkdocstrings
